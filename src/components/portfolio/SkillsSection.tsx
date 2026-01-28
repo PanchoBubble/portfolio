@@ -53,8 +53,8 @@ export function SkillsSection() {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
-    <section className="w-full py-20 px-32 border-b border-t border-portfolio-border-primary" style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }} ref={ref}>
-      <div className="max-w-6xl mx-auto flex flex-col gap-12">
+    <section className="w-full py-12 px-6 md:py-16 md:px-16 lg:py-20 lg:px-32 border-b border-t border-portfolio-border-primary" style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }} ref={ref}>
+      <div className="max-w-6xl mx-auto flex flex-col gap-8 md:gap-12">
         <motion.h2
           className="text-xs font-semibold tracking-widest text-portfolio-text-tertiary"
           initial={{ opacity: 0 }}
@@ -63,7 +63,7 @@ export function SkillsSection() {
         >
           TECHNICAL SKILLS
         </motion.h2>
-        <div className="grid grid-cols-5 gap-16 w-full">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12 lg:gap-16 w-full">
           {Object.entries(skills).map(([category, items], idx) => (
             <motion.div
               key={category}

@@ -25,8 +25,8 @@ export function ContactSection() {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
-    <section className="w-full py-20 px-32 border-t bg-black border-portfolio-border-primary" ref={ref}>
-      <div className="max-w-6xl mx-auto flex flex-col gap-8">
+    <section className="w-full py-12 px-6 md:py-16 md:px-16 lg:py-20 lg:px-32 border-t bg-black border-portfolio-border-primary" ref={ref}>
+      <div className="max-w-6xl mx-auto flex flex-col gap-6 md:gap-8">
         <motion.h2
           className="text-xs font-semibold tracking-widest text-portfolio-text-tertiary"
           initial={{ opacity: 0 }}
@@ -36,14 +36,14 @@ export function ContactSection() {
           GET IN TOUCH
         </motion.h2>
         <motion.div
-          className="flex justify-between items-end gap-16"
+          className="flex flex-col md:flex-row md:justify-between md:items-end gap-8 md:gap-16"
           id="contact"
           variants={container}
           initial="hidden"
           animate={isVisible ? 'show' : 'hidden'}
         >
           <motion.div className="flex flex-col gap-4 flex-1" variants={item}>
-            <h3 className="text-4xl font-medium text-portfolio-text-primary">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium text-portfolio-text-primary">
               Let's build something together
             </h3>
             <p className="text-base text-portfolio-text-secondary leading-relaxed max-w-md">

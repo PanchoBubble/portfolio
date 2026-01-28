@@ -27,7 +27,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="w-full min-h-[80vh] py-32 px-32 border-b border-portfolio-border-primary relative overflow-hidden flex items-center"
+      className="w-full min-h-[80vh] py-16 px-6 md:py-24 md:px-16 lg:py-32 lg:px-32 border-b border-portfolio-border-primary relative overflow-hidden flex items-center"
       ref={ref}
     >
       <div className="absolute inset-0">
@@ -44,7 +44,7 @@ export function HeroSection() {
         />
       </div>
       <motion.div
-        className="max-w-6xl mx-auto flex flex-col gap-6 relative z-10 pointer-events-none"
+        className="max-w-6xl mx-auto flex flex-col gap-4 md:gap-6 relative z-10 pointer-events-none"
         variants={container}
         initial="hidden"
         animate={isVisible ? "show" : "hidden"}
@@ -56,13 +56,13 @@ export function HeroSection() {
           FULL STACK ENGINEER
         </motion.span>
         <motion.h1
-          className="text-7xl font-medium text-portfolio-text-primary"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-portfolio-text-primary"
           variants={item}
         >
           Juan F. De Luca
         </motion.h1>
         <motion.p
-          className="text-xl max-w-3xl leading-relaxed text-portfolio-text-secondary"
+          className="text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed text-portfolio-text-secondary"
           variants={item}
         >
           Technical Lead with 8+ years architecting high-scale Web3 platforms

@@ -98,8 +98,8 @@ export function ProjectsSection() {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
-    <section className="w-full py-20 px-32 border-t border-portfolio-border-primary" style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }} ref={ref}>
-      <div className="max-w-7xl mx-auto flex flex-col gap-12">
+    <section className="w-full py-12 px-6 md:py-16 md:px-16 lg:py-20 lg:px-32 border-t border-portfolio-border-primary" style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }} ref={ref}>
+      <div className="max-w-7xl mx-auto flex flex-col gap-8 md:gap-12">
         <motion.h2
           className="text-xs font-semibold tracking-widest text-portfolio-text-tertiary"
           initial={{ opacity: 0 }}
@@ -109,7 +109,7 @@ export function ProjectsSection() {
           SELECTED WORK
         </motion.h2>
         <motion.div
-          className="grid grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
           variants={container}
           initial="hidden"
           animate={isVisible ? 'show' : 'hidden'}
@@ -130,7 +130,7 @@ export function ProjectsSection() {
                   className="flex cursor-pointer flex-col h-full group"
                   style={{ backgroundColor: '#0A0A0A' }}
                 >
-                  <div className="h-48 w-full relative overflow-hidden">
+                  <div className="h-40 md:h-48 w-full relative overflow-hidden">
                     <div
                       className="absolute inset-0 bg-cover bg-center transition-transform duration-400 group-hover:scale-110"
                       style={{
@@ -138,7 +138,7 @@ export function ProjectsSection() {
                       }}
                     />
                   </div>
-                  <div className="p-6 flex flex-col gap-3 grow">
+                  <div className="p-4 md:p-6 flex flex-col gap-3 grow">
                     <h3 className="text-lg font-semibold text-portfolio-text-primary">
                       {project.title}
                     </h3>

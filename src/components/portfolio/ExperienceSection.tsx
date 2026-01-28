@@ -62,8 +62,8 @@ export function ExperienceSection() {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
-    <section className="w-full py-20 px-32 bg-black" ref={ref}>
-      <div className="max-w-7xl mx-auto flex flex-col gap-12">
+    <section className="w-full py-12 px-6 md:py-16 md:px-16 lg:py-20 lg:px-32 bg-black" ref={ref}>
+      <div className="max-w-7xl mx-auto flex flex-col gap-8 md:gap-12">
         <motion.h2
           className="text-xs font-semibold tracking-widest text-portfolio-text-tertiary"
           initial={{ opacity: 0 }}
@@ -76,12 +76,12 @@ export function ExperienceSection() {
           {experiences.map((exp, idx) => (
             <motion.div
               key={exp.id}
-              className={`py-10 flex gap-20 border-t border-portfolio-border-primary`}
+              className={`py-6 md:py-10 flex flex-col md:flex-row gap-4 md:gap-12 lg:gap-20 border-t border-portfolio-border-primary`}
               initial={{ opacity: 0, y: 20 }}
               animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
             >
-              <div className="w-48 flex-shrink-0 flex flex-col gap-1">
+              <div className="md:w-48 md:flex-shrink-0 flex flex-col gap-1">
                 <p className="text-sm text-portfolio-text-secondary">
                   {exp.period}
                 </p>
@@ -90,7 +90,7 @@ export function ExperienceSection() {
                 </p>
               </div>
               <div className="flex-1 flex flex-col gap-4">
-                <h3 className="text-2xl font-semibold text-portfolio-text-primary">
+                <h3 className="text-xl md:text-2xl font-semibold text-portfolio-text-primary">
                   {exp.title}
                 </h3>
                 <p className="text-sm text-portfolio-text-secondary leading-relaxed">
