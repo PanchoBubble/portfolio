@@ -15,19 +15,19 @@ const skills = {
     'TypeScript',
     'PostgreSQL / MongoDB',
     'GraphQL / REST',
-    'Redis',
+    'Redis / Kafka',
     'Docker / Kubernetes',
   ],
   Tools: [
     'Git / GitHub',
     'GitHub Actions',
     'Stripe API',
-    'AWS',
+    'AWS / GCP',
     'Vercel',
-    'Figma',
+    'Grafana / Loki / Prometheus',
   ],
-  Blockchain: ['Web3.js', 'Ethers.js', 'Solidity', 'Hardhat', 'The Graph'],
-  AI: ['OpenAI API', 'LLMs', 'RAG', 'Vector DBs', 'Prompt Engineering'],
+  Blockchain: ['Web3.js', 'Ethers.js', 'Hardhat', 'The Graph', 'Rust / Go (working knowledge)'],
+  AI: ['LLMs', 'RAG', 'LangChain / LangGraph', 'MCP', 'OpenRouter', 'Prompt Engineering'],
 }
 
 const container = {

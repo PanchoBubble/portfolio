@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ColorBends } from "@/components/ui/ColorBends";
 
@@ -24,11 +25,20 @@ const item = {
 
 export function HeroSection() {
   const { ref, isVisible } = useScrollAnimation();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.5], [0, -50]);
 
   return (
     <section
       className="w-full min-h-[80vh] py-16 px-6 md:py-24 md:px-16 lg:py-32 lg:px-32 border-b border-portfolio-border-primary relative overflow-hidden flex items-center"
-      ref={ref}
+      ref={sectionRef}
     >
       <div className="absolute inset-0">
         <ColorBends
@@ -48,6 +58,8 @@ export function HeroSection() {
         variants={container}
         initial="hidden"
         animate={isVisible ? "show" : "hidden"}
+        style={{ opacity, y }}
+        ref={ref}
       >
         <motion.span
           className="text-xs font-semibold tracking-widest text-portfolio-accent-primary"
@@ -70,15 +82,22 @@ export function HeroSection() {
           serving 1.5M users with 99.9% SLA. Strong focus on blockchain
           integrations, real-time systems, and emerging AI/LLM tooling.
         </motion.p>
-        <motion.div className="flex gap-4 pt-4" variants={item}>
-          <motion.a
-            href="#contact"
-            className="px-6 py-2 font-medium rounded text-white bg-portfolio-accent-primary hover:opacity-90 transition pointer-events-auto"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+        <motion.div className="flex flex-wrap items-center gap-4 pt-4 pointer-events-auto" variants={item}>
+          <a
+            href="mailto:juan.f.d.luca@gmail.com"
+            className="text-sm text-portfolio-text-secondary hover:text-portfolio-text-primary transition"
           >
-            Get in touch
-          </motion.a>
+            juan.f.d.luca@gmail.com
+          </a>
+          <span className="text-portfolio-accent-primary">•</span>
+          <a
+            href="https://linkedin.com/in/juan-f-de-luca"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-portfolio-text-secondary hover:text-portfolio-accent-primary transition"
+          >
+            LinkedIn ↗
+          </a>
         </motion.div>
       </motion.div>
     </section>
