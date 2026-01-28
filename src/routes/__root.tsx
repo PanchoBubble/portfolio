@@ -32,6 +32,26 @@ export const Route = createRootRoute({
         content: '#000000',
       },
       {
+        name: 'mobile-web-app-capable',
+        content: 'yes',
+      },
+      {
+        name: 'apple-mobile-web-app-capable',
+        content: 'yes',
+      },
+      {
+        name: 'apple-mobile-web-app-status-bar-style',
+        content: 'black-translucent',
+      },
+      {
+        name: 'apple-mobile-web-app-title',
+        content: 'JDL',
+      },
+      {
+        name: 'format-detection',
+        content: 'telephone=no',
+      },
+      {
         property: 'og:title',
         content: 'Juan F. De Luca - Software Engineer',
       },
@@ -89,6 +109,10 @@ export const Route = createRootRoute({
       {
         rel: 'apple-touch-icon',
         href: '/apple-touch-icon.png',
+      },
+      {
+        rel: 'manifest',
+        href: '/manifest.json',
       },
     ],
     scripts: [
