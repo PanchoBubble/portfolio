@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
+import { SpotlightCard } from '@/components/ui/SpotlightCard'
 
 const projects = [
   {
@@ -114,39 +115,43 @@ export function ProjectsSection() {
           animate={isVisible ? 'show' : 'hidden'}
         >
           {projects.map((project) => (
-            <motion.a
+            <motion.div
               key={project.id}
-              href={`https://${project.link}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded border overflow-hidden border-portfolio-border-primary flex cursor-pointer flex-col"
-              style={{ backgroundColor: '#0A0A0A' }}
               variants={projectCard}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
             >
-              <motion.div
-                className="h-48 w-full relative overflow-hidden bg-cover bg-center"
-                style={{
-                  backgroundImage: `url('${project.image}')`,
-                }}
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.4 }}
-              />
-              <div className="p-6 flex flex-col gap-3 grow">
-                <h3 className="text-lg font-semibold text-portfolio-text-primary">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-portfolio-text-secondary leading-relaxed">
-                  {project.description}
-                </p>
-                <span
-                  className="text-sm font-medium text-portfolio-accent-primary mt-auto"
+              <SpotlightCard
+                className="rounded border border-portfolio-border-primary h-full"
+                spotlightColor="rgba(255, 255, 255, 0.15)"
+              >
+                <a
+                  href={`https://${project.link}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex cursor-pointer flex-col h-full group"
+                  style={{ backgroundColor: '#0A0A0A' }}
                 >
-                  {project.link} →
-                </span>
-              </div>
-            </motion.a>
+                  <div className="h-48 w-full relative overflow-hidden">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-400 group-hover:scale-110"
+                      style={{
+                        backgroundImage: `url('${project.image}')`,
+                      }}
+                    />
+                  </div>
+                  <div className="p-6 flex flex-col gap-3 grow">
+                    <h3 className="text-lg font-semibold text-portfolio-text-primary">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-portfolio-text-secondary leading-relaxed">
+                      {project.description}
+                    </p>
+                    <span className="text-sm font-medium text-portfolio-accent-primary mt-auto">
+                      {project.link} →
+                    </span>
+                  </div>
+                </a>
+              </SpotlightCard>
+            </motion.div>
           ))}
         </motion.div>
       </div>

@@ -21,6 +21,7 @@ precision highp float;
 uniform float uTime;
 uniform float uSpeed;
 uniform vec2 uCanvas;
+uniform vec2 uPointer;
 uniform vec3 uColor1;
 uniform vec3 uColor2;
 uniform vec3 uColor3;
@@ -33,6 +34,15 @@ void main() {
   vec2 uv = vUv;
   float aspect = uCanvas.x / uCanvas.y;
   vec2 p = (uv - 0.5) * vec2(aspect, 1.0);
+
+  // Mouse position in same space
+  vec2 mouse = uPointer * 0.5 * vec2(aspect, 1.0);
+  float distToMouse = length(p - mouse);
+
+  // Subtle displacement towards cursor
+  vec2 toMouse = normalize(p - mouse + 0.001);
+  float influence = smoothstep(0.8, 0.0, distToMouse) * 0.15;
+  p += toMouse * influence * sin(t * 2.0 + distToMouse * 5.0);
 
   // Layered flowing waves
   float n1 = sin(p.x * 4.0 + sin(p.y * 3.0 + t) * 2.0 + t);
@@ -48,6 +58,9 @@ void main() {
 
   vec3 col = uColor1 * w1 + uColor2 * w2 + uColor3 * w3 + uColor4 * w4;
   col = col / (w1 + w2 + w3 + w4 + 0.001);
+
+  // Subtle glow near cursor
+  col += vec3(0.03, 0.05, 0.08) * smoothstep(0.5, 0.0, distToMouse);
 
   // Add subtle noise
   if (uNoise > 0.001) {
