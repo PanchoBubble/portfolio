@@ -1,10 +1,4 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { TanStackDevtools } from '@tanstack/react-devtools'
-
-import AiDevtools from '../lib/ai-devtools'
-
-import StoreDevtools from '../lib/demo-store-devtools'
 
 import appCss from '../styles.css?url'
 
@@ -21,11 +15,44 @@ export const Route = createRootRoute({
       {
         title: 'Portfolio - Juan F. De Luca',
       },
+      {
+        name: 'description',
+        content: 'Software Engineer specializing in scalable systems, React, and TypeScript',
+      },
+      {
+        property: 'og:title',
+        content: 'Juan F. De Luca - Software Engineer',
+      },
+      {
+        property: 'og:description',
+        content: 'Software Engineer specializing in scalable systems, React, and TypeScript',
+      },
+      {
+        property: 'og:image',
+        content: '/og-image.svg',
+      },
+      {
+        property: 'og:type',
+        content: 'website',
+      },
+      {
+        name: 'twitter:card',
+        content: 'summary_large_image',
+      },
+      {
+        name: 'twitter:image',
+        content: '/og-image.svg',
+      },
     ],
     links: [
       {
         rel: 'stylesheet',
         href: appCss,
+      },
+      {
+        rel: 'icon',
+        type: 'image/svg+xml',
+        href: '/favicon.svg',
       },
     ],
   }),
@@ -41,19 +68,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body className="bg-black">
         {children}
-        <TanStackDevtools
-          config={{
-            position: 'bottom-right',
-          }}
-          plugins={[
-            {
-              name: 'Tanstack Router',
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-            AiDevtools,
-            StoreDevtools,
-          ]}
-        />
         <Scripts />
       </body>
     </html>

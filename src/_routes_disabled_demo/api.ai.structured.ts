@@ -37,7 +37,7 @@ const RecipeSchema = z.object({
 
 export type Recipe = z.infer<typeof RecipeSchema>
 
-export const Route = createFileRoute('/demo/api/ai/structured')({
+export const Route = createFileRoute('/_demo/api/ai/structured')({
   server: {
     handlers: {
       POST: async ({ request }) => {

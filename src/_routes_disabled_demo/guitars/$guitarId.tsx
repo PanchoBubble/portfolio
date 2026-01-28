@@ -2,7 +2,7 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 
 import guitars from '@/data/demo-guitars'
 
-export const Route = createFileRoute('/demo/guitars/$guitarId')({
+export const Route = createFileRoute('/_demo/guitars/$guitarId')({
   component: RouteComponent,
   loader: async ({ params }) => {
     const guitar = guitars.find((guitar) => guitar.id === +params.guitarId)

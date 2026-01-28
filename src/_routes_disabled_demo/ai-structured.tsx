@@ -305,6 +305,6 @@ function StructuredPage() {
   )
 }
 
-export const Route = createFileRoute('/demo/ai-structured')({
+export const Route = createFileRoute('/_demo/ai-structured')({
   component: StructuredPage,
 })

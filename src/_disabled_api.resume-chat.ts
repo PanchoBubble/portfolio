@@ -12,7 +12,7 @@ import {
   searchExperience,
 } from '@/lib/resume-tools'
 
-export const Route = createFileRoute('/api/resume-chat')({
+export const Route = createFileRoute('/_api/resume-chat')({
   server: {
     handlers: {
       POST: async ({ request }) => {

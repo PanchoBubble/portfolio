@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { generateTranscription } from '@tanstack/ai'
 import { openaiTranscription } from '@tanstack/ai-openai'
 
-export const Route = createFileRoute('/demo/api/ai/transcription')({
+export const Route = createFileRoute('/_demo/api/ai/transcription')({
   server: {
     handlers: {
       POST: async ({ request }) => {

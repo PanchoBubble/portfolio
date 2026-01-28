@@ -1,7 +1,7 @@
 import { articles } from '@/lib/strapiClient'
 import { createFileRoute, Link } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/demo/strapi_/$articleId')({
+export const Route = createFileRoute('/_demo/strapi_/$articleId')({
   component: RouteComponent,
   loader: async ({ params }) => {
     const { data: article } = await articles.findOne(params.articleId)
