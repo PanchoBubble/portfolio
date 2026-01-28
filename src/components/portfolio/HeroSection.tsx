@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
+import { ColorBends } from '@/components/ui/ColorBends'
 
 const container = {
   hidden: { opacity: 0 },
@@ -25,9 +26,22 @@ export function HeroSection() {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
-    <section className="w-full py-20 px-32 border-b bg-black border-portfolio-border-primary" ref={ref}>
+    <section className="w-full min-h-[80vh] py-32 px-32 border-b border-portfolio-border-primary relative overflow-hidden flex items-center" ref={ref}>
+      <div className="absolute inset-0">
+        <ColorBends
+          colors={['#0a1520', '#101825', '#0c1218', '#08101a']}
+          speed={0.15}
+          scale={1.2}
+          frequency={0.8}
+          warpStrength={0.8}
+          mouseInfluence={0.5}
+          parallax={0.3}
+          noise={0.05}
+          transparent={false}
+        />
+      </div>
       <motion.div
-        className="max-w-5xl mx-auto flex flex-col gap-6"
+        className="max-w-5xl mx-auto flex flex-col gap-6 relative z-10"
         variants={container}
         initial="hidden"
         animate={isVisible ? 'show' : 'hidden'}

@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { PortfolioHeader } from '@/components/portfolio/PortfolioHeader'
 import { HeroSection } from '@/components/portfolio/HeroSection'
 import { SkillsSection } from '@/components/portfolio/SkillsSection'
 import { ExperienceSection } from '@/components/portfolio/ExperienceSection'
@@ -14,7 +13,6 @@ export const Route = createFileRoute('/')({
 function App() {
   return (
     <div className="w-full">
-      <PortfolioHeader />
       <HeroSection />
       <SkillsSection />
       <ExperienceSection />

@@ -119,7 +119,7 @@ export function ProjectsSection() {
               href={`https://${project.link}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded border overflow-hidden border-portfolio-border-primary cursor-pointer"
+              className="rounded border overflow-hidden border-portfolio-border-primary flex cursor-pointer flex-col"
               style={{ backgroundColor: '#0A0A0A' }}
               variants={projectCard}
               whileHover={{ scale: 1.02 }}
@@ -133,7 +133,7 @@ export function ProjectsSection() {
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.4 }}
               />
-              <div className="p-6 flex flex-col gap-3">
+              <div className="p-6 flex flex-col gap-3 grow">
                 <h3 className="text-lg font-semibold text-portfolio-text-primary">
                   {project.title}
                 </h3>
@@ -141,7 +141,7 @@ export function ProjectsSection() {
                   {project.description}
                 </p>
                 <span
-                  className="text-sm font-medium text-portfolio-accent-primary"
+                  className="text-sm font-medium text-portfolio-accent-primary mt-auto"
                 >
                   {project.link} →
                 </span>

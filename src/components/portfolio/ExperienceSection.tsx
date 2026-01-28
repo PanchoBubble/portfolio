@@ -3,60 +3,67 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 const experiences = [
   {
-    id: 'current',
+    id: 'yat-tari',
     title: 'Technical Lead',
-    company: 'Sowe',
-    period: '2024 - Present',
+    company: 'YAT - TARI',
+    period: '2022 — Present',
     description:
-      'Leading engineering efforts on blockchain infrastructure and distributed systems.',
+      'Led a team of up to 7 senior engineers across the full product development lifecycle, managing end-to-end application delivery for Web3 and blockchain-focused products. Architected the Tari Airdrop Platform scaling to 1.5M users with 30K concurrent capacity while maintaining 99.9% SLA. Built NFT Marketplace with collection discovery across Ethereum, Solana, and Aptos. Developed Paper Trading Game with 5K active users. Implemented secure wallet integrations and integrated the swaps module within Tari Universe desktop app. Integrated custom LLM pipelines and AI-driven flows with agentic automation and guardrails for production systems.',
+    tech: ['React', 'Styled Components', 'Framer Motion', 'GSAP', 'Redux', 'Zustand', 'RxJS', 'WebGL', 'Node.js', 'Express', 'TypeScript', 'Rust', 'TypeORM', 'PostgreSQL', 'GraphQL', 'Docker', 'Redis', 'RabbitMQ', 'Kafka', 'Kubernetes'],
   },
   {
-    id: 'former1',
-    title: 'Senior Full Stack Engineer',
-    company: 'Previous Company',
-    period: '2023 - 2024',
+    id: 'sowe',
+    title: 'Founder & Technical Lead',
+    company: 'SOWE.TECH',
+    period: '2024 — Present',
     description:
-      'Built and maintained high-scale Web3 platforms serving 1.5M+ users with 99.9% SLA.',
+      'Building AI-powered B2B products for customer support automation and workflow agents. Support Bot Platform: Embeddable chatbot with LLM-driven ticket creation, user management, and FAQ handling. Guardrails AI integration prevents hallucinations and protects sensitive data. Web Agent Automation: Prompt-driven platform deploying browser agents for multi-step workflows with task templating, reruns, and cross-run comparison. Pursuing enterprise contracts including payment system integrations.',
+    tech: ['LangGraph', 'Guardrails AI', 'Python', 'TypeScript', 'PostgreSQL', 'Cloudflare Workers'],
   },
   {
-    id: 'former2',
-    title: 'Full Stack Engineer',
-    company: 'Prior Role',
-    period: '2022 - 2023',
+    id: 'phantom',
+    title: 'Senior Full Stack Developer',
+    company: 'PHANTOM',
+    period: '2021 — 2022',
     description:
-      'Architected real-time systems and blockchain integrations for token claiming platform.',
+      'Digital agency delivering end-to-end web applications for enterprise clients. Delivered 5 concurrent projects for Sony, Capital G (Alphabet), and Financial Times, balancing rapid campaign timelines with production-quality standards. Built flexible CMS-driven applications allowing clients to customize layouts without developer involvement. Capital G: Migrated backend CMS architecture. Financial Times: Migrated posts database and restructured UI architecture. Led 2-3 senior developers while providing architectural guidance.',
+    tech: ['Next.js', 'Node.js', 'TypeScript', 'Contentful', 'Strapi', 'GraphQL', 'AWS', 'Vercel'],
   },
   {
-    id: 'former3',
-    title: 'Software Engineer',
-    company: 'Earlier Position',
-    period: '2021 - 2022',
-    description: 'Developed features using React, Node.js, and PostgreSQL.',
+    id: 'dare',
+    title: 'Full Stack Developer',
+    company: 'DARE DIGITAL',
+    period: '2019 — 2021',
+    description:
+      'Digital agency delivering campaigns and web experiences for enterprise and SMB clients. Delivered 10+ projects ranging from rapid-turnaround landing pages to ongoing platform work for BMW, MINI, Hertz, and Mount Anvil. Built the MINI marketplace platform for pre-owned vehicles. Developed BMW campaign landing pages for new EV launches. Created custom Django CMS implementations with REST APIs, React frontends, and AWS infrastructure. Established reusable Docker/Parcel/Webpack tooling adopted across agency projects.',
+    tech: ['React', 'Redux', 'Django', 'Django-CMS', 'PostgreSQL', 'AWS RDS', 'Docker', 'Jenkins'],
   },
   {
-    id: 'former4',
-    title: 'Junior Developer',
-    company: 'First Role',
-    period: '2020 - 2021',
-    description: 'Started career building web applications with React and Node.js.',
+    id: 'bubble',
+    title: 'Full Stack Developer',
+    company: 'BUBBLE-BPM',
+    period: '2018 — 2019',
+    description:
+      'Built invoice processing crawlers using Python/Requests that automated data extraction, populating PostgreSQL databases. Led Django 1.6 → 2.1 migration for large-scale application, restructuring APIs to GraphQL. Developed React dashboard with Apollo Client and ChartJS for real-time cost visibility across departments.',
+    tech: ['Python', 'Django', 'GraphQL', 'React', 'Apollo Client', 'ChartJS', 'PostgreSQL'],
+  },
+  {
+    id: 'earlier',
+    title: 'Earlier Roles',
+    company: 'Various',
+    period: '2016 — 2018',
+    description:
+      'Ernst & Young (2017-2018): Supporting Role in Big Data & Analytics. Automated monitoring and reporting workflows using PowerShell, Python, and Selenium. Managed Jenkins/Spark/Nifi job monitoring and server vulnerability remediation. Accenture (2016-2017): SW/Application Tech Support BigData. Server vulnerability remediation, data recovery, root cause analysis. Telecom Italy (2016): Functional Tester. Test case creation and execution, Oracle CRM, test automation with Selenium.',
+    tech: ['Python', 'PowerShell', 'Selenium', 'Jenkins', 'Spark', 'Nifi', 'Tableau', 'Oracle CRM'],
   },
 ]
-
-const expItem = {
-  hidden: { opacity: 0, x: -30 },
-  show: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.6 },
-  },
-}
 
 export function ExperienceSection() {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
     <section className="w-full py-20 px-32 bg-black" ref={ref}>
-      <div className="max-w-6xl mx-auto flex flex-col gap-12">
+      <div className="max-w-7xl mx-auto flex flex-col gap-12">
         <motion.h2
           className="text-xs font-semibold tracking-widest text-portfolio-text-tertiary"
           initial={{ opacity: 0 }}
@@ -69,27 +76,28 @@ export function ExperienceSection() {
           {experiences.map((exp, idx) => (
             <motion.div
               key={exp.id}
-              className={`py-8 flex gap-16 ${
-                idx !== experiences.length - 1 ? 'border-b border-portfolio-border-primary' : ''
-              }`}
-              initial={{ opacity: 0, x: -30 }}
-              animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+              className={`py-10 flex gap-20 border-t border-portfolio-border-primary`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
             >
-              <div className="flex-1">
-                <h3 className="text-lg font-semibold text-portfolio-text-primary">
-                  {exp.title}
-                </h3>
-                <p className="text-sm mt-1 text-portfolio-accent-primary">
+              <div className="w-48 flex-shrink-0 flex flex-col gap-1">
+                <p className="text-sm text-portfolio-text-secondary">
+                  {exp.period}
+                </p>
+                <p className="text-sm font-medium text-portfolio-accent-primary">
                   {exp.company}
                 </p>
               </div>
-              <div className="flex-1 flex flex-col gap-2">
-                <p className="text-sm font-medium text-portfolio-text-secondary">
-                  {exp.period}
-                </p>
-                <p className="text-sm text-portfolio-text-secondary">
+              <div className="flex-1 flex flex-col gap-4">
+                <h3 className="text-2xl font-semibold text-portfolio-text-primary">
+                  {exp.title}
+                </h3>
+                <p className="text-sm text-portfolio-text-secondary leading-relaxed">
                   {exp.description}
+                </p>
+                <p className="text-xs font-mono text-portfolio-text-tertiary">
+                  {exp.tech.join('  •  ')}
                 </p>
               </div>
             </motion.div>
