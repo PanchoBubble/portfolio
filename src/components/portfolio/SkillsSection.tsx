@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 const skills = {
@@ -51,10 +52,19 @@ const skillItem = {
 
 export function SkillsSection() {
   const { ref, isVisible } = useScrollAnimation()
+  const sectionRef = useRef<HTMLElement>(null)
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "start 0.3"],
+  })
+
+  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1])
+  const y = useTransform(scrollYProgress, [0, 1], [50, 0])
 
   return (
-    <section className="w-full py-12 px-6 md:py-16 md:px-16 lg:py-20 lg:px-32 border-b border-t border-portfolio-border-primary" style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }} ref={ref}>
-      <div className="max-w-6xl mx-auto flex flex-col gap-8 md:gap-12">
+    <section className="w-full py-12 px-6 md:py-16 md:px-16 lg:py-20 lg:px-32 border-b border-t border-portfolio-border-primary" style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }} ref={sectionRef}>
+      <motion.div className="max-w-6xl mx-auto flex flex-col gap-8 md:gap-12" style={{ opacity, y }} ref={ref}>
         <motion.h2
           className="text-xs font-semibold tracking-widest text-portfolio-text-tertiary"
           initial={{ opacity: 0 }}
@@ -94,7 +104,7 @@ export function SkillsSection() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }
