@@ -44,7 +44,7 @@ export function HeroSection() {
     >
       <div className="absolute inset-0">
         <ColorBends
-          colors={["#0a1520", "#101825", "#0c1218", "#08101a"]}
+          colors={["#1a0810", "#200c14", "#150610", "#120408"]}
           speed={0.15}
           scale={1.2}
           frequency={0.8}
@@ -104,7 +104,7 @@ export function HeroSection() {
             </a>
             <span className="text-portfolio-accent-primary">•</span>
             <a
-              href="/Juan De Luca - CV.pdf"
+              href="/juan-de-luca-cv.pdf"
               download
               className="text-sm text-portfolio-text-secondary hover:text-portfolio-accent-primary transition"
             >

@@ -60,7 +60,7 @@ void main() {
   col = col / (w1 + w2 + w3 + w4 + 0.001);
 
   // Subtle glow near cursor
-  col += vec3(0.03, 0.05, 0.08) * smoothstep(0.5, 0.0, distToMouse);
+  col += vec3(0.08, 0.02, 0.04) * smoothstep(0.5, 0.0, distToMouse);
 
   // Add subtle noise
   if (uNoise > 0.001) {
