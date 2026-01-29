@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { useRef, useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ColorBends } from "@/components/ui/ColorBends";
 import CardSwap, { Card } from "@/components/ui/CardSwap";
@@ -34,12 +34,24 @@ export function HeroSection() {
     offset: ["start start", "end start"],
   });
 
+  // Window scroll for scroll indicator fade (only shows once)
+  const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
+  const { scrollY } = useScroll();
+  const scrollIndicatorOpacity = useTransform(scrollY, [0, 20], [1, 0]);
+  const scrollIndicatorY = useTransform(scrollY, [0, 20], [0, -10]);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest > 20 && !scrollIndicatorHidden) {
+      setScrollIndicatorHidden(true);
+    }
+  });
+
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const y = useTransform(scrollYProgress, [0, 0.5], [0, -50]);
 
   return (
     <section
-      className="w-full min-h-[80vh] py-16 px-6 md:py-24 md:px-16 lg:py-32 lg:px-32 border-b border-portfolio-border-primary relative overflow-hidden flex items-center"
+      className="w-full min-h-screen py-16 px-6 md:py-24 md:px-16 lg:py-32 lg:px-32 border-b border-portfolio-border-primary relative overflow-hidden flex items-center"
       ref={sectionRef}
     >
       <div className="absolute inset-0">
@@ -160,6 +172,40 @@ export function HeroSection() {
           </CardSwap>
         </motion.div>
       </div>
+
+      {/* Scroll indicator - only shows once */}
+      {!scrollIndicatorHidden && (
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-20"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.6 }}
+          style={{ opacity: scrollIndicatorOpacity, y: scrollIndicatorY }}
+          onClick={() => {
+            document.getElementById('selected-work')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
+          <span className="text-xs text-portfolio-text-secondary tracking-widest">SCROLL</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-portfolio-accent-primary"
+            >
+              <path d="M12 5v14M19 12l-7 7-7-7" />
+            </svg>
+          </motion.div>
+        </motion.div>
+      )}
     </section>
   );
 }

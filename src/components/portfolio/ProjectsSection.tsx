@@ -1,52 +1,17 @@
-import { motion } from 'framer-motion'
-import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { SpotlightCard } from '@/components/ui/SpotlightCard'
+import { ScrollFadeWrapper } from '@/components/ui/ScrollFadeWrapper'
 import { projects } from '@/data/projects'
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
-}
-
-const projectCard = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.3 },
-  },
-}
-
 export function ProjectsSection() {
-  const { ref, isVisible } = useScrollAnimation()
-
   return (
-    <section id="selected-work" className="w-full py-12 px-6 md:py-16 md:px-16 lg:py-20 lg:px-32 border-t border-portfolio-border-primary" style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }} ref={ref}>
+    <section id="selected-work" className="w-full py-12 px-6 md:py-16 md:px-16 lg:py-20 lg:px-32 border-t border-portfolio-border-primary" style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }}>
       <div className="max-w-7xl mx-auto flex flex-col gap-8 md:gap-12">
-        <motion.h2
-          className="text-xs font-semibold tracking-widest text-portfolio-text-tertiary"
-          initial={{ opacity: 0 }}
-          animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.3 }}
-        >
+        <h2 className="text-xs font-semibold tracking-widest text-portfolio-text-tertiary">
           SELECTED WORK
-        </motion.h2>
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
-          variants={container}
-          initial="hidden"
-          animate={isVisible ? 'show' : 'hidden'}
-        >
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {projects.map((project) => (
-            <motion.div
-              key={project.id}
-              variants={projectCard}
-            >
+            <ScrollFadeWrapper key={project.id}>
               <SpotlightCard
                 className="rounded border border-portfolio-border-primary h-full"
                 spotlightColor="rgba(255, 255, 255, 0.15)"
@@ -79,9 +44,9 @@ export function ProjectsSection() {
                   </div>
                 </a>
               </SpotlightCard>
-            </motion.div>
+            </ScrollFadeWrapper>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

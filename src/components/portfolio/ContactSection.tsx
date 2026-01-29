@@ -1,48 +1,28 @@
-import { motion } from 'framer-motion'
-import { useScrollAnimation } from '@/hooks/useScrollAnimation'
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-}
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
-}
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 export function ContactSection() {
-  const { ref, isVisible } = useScrollAnimation()
+  const sectionRef = useRef<HTMLElement>(null)
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  })
+
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
+  const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [50, 0, 0, -50])
 
   return (
-    <section className="w-full py-12 px-6 md:py-16 md:px-16 lg:py-20 lg:px-32 border-t bg-black border-portfolio-border-primary" ref={ref}>
-      <div className="max-w-6xl mx-auto flex flex-col gap-6 md:gap-8">
-        <motion.h2
-          className="text-xs font-semibold tracking-widest text-portfolio-text-tertiary"
-          initial={{ opacity: 0 }}
-          animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+    <section className="w-full py-12 px-6 md:py-16 md:px-16 lg:py-20 lg:px-32 border-t bg-black border-portfolio-border-primary" ref={sectionRef}>
+      <motion.div className="max-w-6xl mx-auto flex flex-col gap-6 md:gap-8" style={{ opacity, y }}>
+        <h2 className="text-xs font-semibold tracking-widest text-portfolio-text-tertiary">
           GET IN TOUCH
-        </motion.h2>
-        <motion.div
+        </h2>
+        <div
           className="flex flex-col md:flex-row md:justify-between md:items-end gap-8 md:gap-16"
           id="contact"
-          variants={container}
-          initial="hidden"
-          animate={isVisible ? 'show' : 'hidden'}
         >
-          <motion.div className="flex flex-col gap-4 flex-1" variants={item}>
+          <div className="flex flex-col gap-4 flex-1">
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium text-portfolio-text-primary">
               Let's build something together
             </h3>
@@ -50,9 +30,9 @@ export function ContactSection() {
               I'm always open to discussing new projects, creative ideas or
               opportunities to be part of your vision.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div className="flex flex-col gap-4" variants={item}>
+          <div className="flex flex-col gap-4">
             <motion.div className="flex items-center gap-3" whileHover={{ x: 5 }}>
               <span className="text-xs font-medium text-portfolio-text-tertiary">
                 Email
@@ -90,9 +70,9 @@ export function ContactSection() {
                 +44 07543 692373
               </a>
             </motion.div>
-          </motion.div>
-        </motion.div>
-      </div>
+          </div>
+        </div>
+      </motion.div>
     </section>
   )
 }
