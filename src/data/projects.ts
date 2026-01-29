@@ -77,6 +77,20 @@ export const projects: Project[] = [
     link: 'cajasalud.com.ar',
     image: '/cpsps.png',
   },
+  {
+    id: 11,
+    title: 'Depop Blog',
+    description: 'Dynamic editorial platform made to celebrate and elevate the community fuelling Depop\'s rise. CMS built with Contentful.',
+    link: 'www.depop.com/blog',
+    image: '/depop-blog.jpg',
+  },
+  {
+    id: 12,
+    title: 'Google: 10 Weeks of Magic',
+    description: 'Google Holiday Street, an interactive advent calendar revealing heartwarming stories and exclusive offers. Built with Angular.',
+    link: 'www.phantom.land/projects/10-weeks-of-magic',
+    image: '/google-holiday.png',
+  },
 ];
 
 // Selected projects for hero card swap

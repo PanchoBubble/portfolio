@@ -55,7 +55,7 @@ export function HeroSection() {
           transparent={false}
         />
       </div>
-      <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center gap-8 lg:gap-16 relative z-10">
+      <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center gap-8 lg:gap-16 relative z-10 pointer-events-none">
         {/* Text content - left side */}
         <motion.div
           className="flex-1 flex flex-col gap-4 md:gap-6 pointer-events-none lg:max-w-[60%]"
@@ -101,6 +101,14 @@ export function HeroSection() {
               className="text-sm text-portfolio-text-secondary hover:text-portfolio-accent-primary transition"
             >
               LinkedIn ↗
+            </a>
+            <span className="text-portfolio-accent-primary">•</span>
+            <a
+              href="/Juan De Luca - CV.pdf"
+              download
+              className="text-sm text-portfolio-text-secondary hover:text-portfolio-accent-primary transition"
+            >
+              Download CV ↓
             </a>
           </motion.div>
         </motion.div>
